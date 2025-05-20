@@ -1,16 +1,16 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const app = express();
 
 app.use(cors());
 
-// 루트 경로 응답 추가
-app.get('/', (req, res) => {
-  res.send('서버는 정상 작동 중입니다. /api/hello를 호출해보세요.');
-});
+// 📌 정적 파일 폴더 등록
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/api/hello', (req, res) => {
-  res.json({ message: '백엔드 연결 성공!' });
+// 기본 라우트 (생략해도 자동으로 index.html 표시됨)
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 const port = process.env.PORT || 3000;
