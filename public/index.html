@@ -2,10 +2,243 @@
 <html lang="ko">
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>익명 건의함 | SuggestBox SaaS</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500;700&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            :root {
+                --neutral: #f5f6fa;
+                --point: #5c8976; /* 저채도 안정 그린 */
+                --point2: #6a82b8; /* 신뢰+딥블루 */
+                --text-main: #2d3640;
+                --text-sub: #6c757d;
+                --card-bg: #fff;
+                --radius: 20px;
+                --shadow: 0 8px 28px 0 rgba(60, 80, 120, 0.09);
+            }
+            html,
+            body {
+                height: 100%;
+                margin: 0;
+                background: var(--neutral);
+                font-family: "Noto Sans KR", "Apple SD Gothic Neo", Arial,
+                    sans-serif;
+                color: var(--text-main);
+                min-height: 100vh;
+                -webkit-font-smoothing: antialiased;
+            }
+            body {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                padding: 0;
+            }
+            .fadein {
+                opacity: 0;
+                transform: translateY(24px);
+                transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                    transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .fadein.show {
+                opacity: 1;
+                transform: none;
+            }
+            .card {
+                background: var(--card-bg);
+                border-radius: var(--radius);
+                box-shadow: var(--shadow);
+                max-width: 400px;
+                width: 100vw;
+                padding: 44px 28px 32px 28px;
+                text-align: center;
+                margin: 0 auto;
+                border: 1.2px solid #e2e6ea;
+            }
+            .logo {
+                font-size: 2.2rem;
+                font-weight: 700;
+                letter-spacing: -1.2px;
+                color: var(--point2);
+                margin-bottom: 12px;
+            }
+            .subtitle {
+                font-size: 1.13rem;
+                color: var(--text-sub);
+                margin-bottom: 28px;
+                line-height: 1.47;
+            }
+            .features {
+                display: flex;
+                justify-content: space-between;
+                gap: 10px;
+                margin-bottom: 22px;
+                flex-wrap: wrap;
+            }
+            .feature {
+                flex: 1;
+                min-width: 90px;
+                background: #f0f3f7;
+                border-radius: 14px;
+                padding: 16px 0 10px 0;
+                margin: 0 4px;
+                box-shadow: 0 2px 10px 0 rgba(120, 130, 160, 0.03);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                font-size: 0.97rem;
+                color: var(--text-sub);
+                font-weight: 500;
+            }
+            .feature-icon {
+                font-size: 1.5rem;
+                margin-bottom: 7px;
+                color: var(--point2);
+            }
+            form {
+                display: flex;
+                flex-direction: column;
+                gap: 0.7em;
+            }
+            textarea {
+                border: 1.5px solid #dae2e7;
+                border-radius: 12px;
+                resize: none;
+                min-height: 90px;
+                font-size: 1.03rem;
+                padding: 16px;
+                background: #f8fafb;
+                transition: border 0.2s;
+                outline: none;
+            }
+            textarea:focus {
+                border: 1.5px solid var(--point);
+                background: #f2f7f5;
+            }
+            .cta {
+                margin-top: 12px;
+                padding: 15px 0;
+                background: var(--point);
+                color: #fff;
+                border: none;
+                border-radius: 9px;
+                font-size: 1.09rem;
+                font-weight: 700;
+                box-shadow: 0 2px 7px 0 rgba(60, 80, 120, 0.04);
+                cursor: pointer;
+                transition: background 0.2s, box-shadow 0.2s;
+                letter-spacing: 0.02em;
+            }
+            .cta:hover,
+            .cta:focus {
+                background: #497260;
+                box-shadow: 0 3px 12px 0 rgba(92, 137, 118, 0.08);
+            }
+            .result {
+                margin-top: 18px;
+                font-size: 1rem;
+                color: var(--point2);
+                min-height: 22px;
+                font-weight: 600;
+                letter-spacing: -0.01em;
+                transition: color 0.2s;
+            }
+            @media (max-width: 600px) {
+                .card {
+                    padding: 28px 6vw 22px 6vw;
+                    max-width: 99vw;
+                }
+                .features {
+                    flex-direction: column;
+                    gap: 10px;
+                }
+                .feature {
+                    margin: 0;
+                    min-width: 60px;
+                    font-size: 1.01rem;
+                }
+            }
+        </style>
     </head>
     <body>
-        hello world
+        <main class="fadein">
+            <section class="card">
+                <div class="logo">SuggestBox</div>
+                <div class="subtitle">
+                    익명 건의함<br />
+                    <span style="color: var(--point)">마음 편하게</span>
+                    솔직하게 남겨보세요.
+                </div>
+                <div class="features">
+                    <div class="feature">
+                        <div class="feature-icon">🕶️</div>
+                        완전 익명
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🔒</div>
+                        철저 보안
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🌿</div>
+                        심리적 보호
+                    </div>
+                </div>
+                <form id="suggestionForm" autocomplete="off">
+                    <textarea
+                        id="suggestion"
+                        maxlength="500"
+                        placeholder="이곳에 건의나 의견을 남겨주세요 (최대 500자)"
+                    ></textarea>
+                    <button class="cta" type="submit">건의 남기기</button>
+                </form>
+                <div class="result" id="result"></div>
+            </section>
+        </main>
+        <script>
+            // 페이드 인 효과
+            window.addEventListener("DOMContentLoaded", () => {
+                setTimeout(() => {
+                    document.querySelector(".fadein").classList.add("show");
+                }, 100);
+            });
+
+            // 제출 이벤트
+            document.getElementById("suggestionForm").onsubmit =
+                async function (e) {
+                    e.preventDefault();
+                    const suggestion = document
+                        .getElementById("suggestion")
+                        .value.trim();
+                    const resultEl = document.getElementById("result");
+
+                    if (!suggestion) {
+                        resultEl.textContent = "마음 속 이야기를 남겨주세요.";
+                        resultEl.style.color = "#c77474";
+                        return;
+                    }
+                    resultEl.textContent = "제출 중...";
+                    resultEl.style.color = "var(--point2)";
+
+                    try {
+                        const res = await fetch("/api/suggestion", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({ suggestion }),
+                        });
+                        const data = await res.json();
+                        resultEl.textContent = data.message;
+                        resultEl.style.color = "var(--point2)";
+                        document.getElementById("suggestion").value = "";
+                    } catch (e) {
+                        resultEl.textContent =
+                            "오류가 발생했습니다. 잠시 후 다시 시도해주세요.";
+                        resultEl.style.color = "#c77474";
+                    }
+                };
+        </script>
     </body>
 </html>
